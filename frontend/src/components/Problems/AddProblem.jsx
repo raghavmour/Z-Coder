@@ -65,7 +65,7 @@ const AddProblem = () => {
           checked={problem.isPublic}
           onChange={handleChange}
         />
-        Make Public
+        <p>Make Public</p>
       </label>
       <button type="submit">Save Problem</button>
     </form>

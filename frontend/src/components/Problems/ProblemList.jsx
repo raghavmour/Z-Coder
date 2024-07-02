@@ -21,17 +21,19 @@ const ProblemList = () => {
   }, []);
 
   return (
-    <div className="problem-list">
+    <>
       <HomeButton />
+    <div className="problem-list">
       <h2>Your Problems</h2>
       {problems.map((problem) => (
         <div key={problem._id} className="problem-item">
-          <p><strong>Question:</strong> {problem.question}</p>
-          <p><strong>Answer:</strong> {problem.answer}</p>
-          <p><strong>Privacy:</strong> {problem.isPublic ? 'Public' : 'Private'}</p>
+          <p>Question:<span style={{ marginLeft: '30px' }}> {problem.question}</span></p>
+          <p>Answer:<span style={{ marginLeft: '30px' }}> {problem.answer}</span></p>
+          <p>Privacy:<span style={{ marginLeft: '30px' }}> {problem.isPublic ? 'Public' : 'Private'}</span></p>
         </div>
       ))}
     </div>
+    </>
   );
 };
 

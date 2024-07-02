@@ -3,6 +3,7 @@ import axios from 'axios';
 import ContestCalendar from './component/ContestCalendar.jsx';
 import HomeButton from '../Home/HomeButton';
 import './Contest.css';
+import './component/ContestCalendar.css';
 
 const Contest = () => {
     const [contests, setContests] = useState([]);
@@ -52,19 +53,22 @@ const Contest = () => {
     };
 
     return (
-        <div className="contest-container">
+        <>
             <HomeButton />
-            <h1></h1>
-            <form onSubmit={handleSubmit} className="contest-form">
-                <input type="text" value={name} placeholder="Contest Name" onChange={(e) => setName(e.target.value)} />
-                <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-                <input type="text" value={link} placeholder="Contest Link" onChange={(e) => setLink(e.target.value)} />
-                <button type="submit">Add Contest</button>
-            </form>
-            <h1>Contest Calendar</h1>
-            <h3> wait some time for it to load </h3>
-            <ContestCalendar contests={contests} />
-        </div>
+            <div className="contest-container">
+
+                <form onSubmit={handleSubmit} className="contest-form">
+                    <h1>Calender</h1>
+                    <input type="text" value={name} placeholder="Contest Name" onChange={(e) => setName(e.target.value)} />
+                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                    <input type="text" value={link} placeholder="Contest Link" onChange={(e) => setLink(e.target.value)} />
+                    <button type="submit">Add Contest</button>
+                </form>
+                <div className='warn'><h1>Contest Calendar</h1>
+                    <h3> wait some time for it to load </h3></div>
+                <ContestCalendar contests={contests} />
+            </div>
+        </>
     );
 };
 

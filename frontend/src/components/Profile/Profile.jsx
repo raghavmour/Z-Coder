@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import HomeButton from '../Home/HomeButton';
+import './profile.css';
 const Profile = () => {
   const [profile, setProfile] = useState({
     username: '',
@@ -45,18 +46,18 @@ const Profile = () => {
 
   return (
     <div>
-            <HomeButton />
+      <HomeButton />
       {!isEditing ? (
-        <div>
+        <div className='profile-class'>
           <h2>Profile</h2>
-          <p><strong>Username:</strong> {profile.username}</p>
-          <p><strong>Tech Stack:</strong> {profile.techStack}</p>
-          <p><strong>Competitive Rating:</strong> {profile.competitiveRating}</p>
-          <p><strong>Favorite Language:</strong> {profile.favoriteLanguage}</p>
+          <p>Username: <span style={{ marginLeft: '50px' }}>{profile.username}</span></p>
+          <p>Tech Stack:<span style={{ marginLeft: '50px' }}>{profile.techStack}</span></p>
+          <p>Competitive Rating:<span style={{ marginLeft: '50px' }}> {profile.competitiveRating}</span></p>
+          <p>Favorite Language:<span style={{ marginLeft: '50px' }}>{profile.favoriteLanguage}</span></p>
           <button onClick={() => setIsEditing(true)}>Edit</button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit}>
+        <form className='profile-edit' onSubmit={handleSubmit}>
           <h2>Edit Profile</h2>
           <input
             type="text"

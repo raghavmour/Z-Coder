@@ -56,31 +56,34 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dashboard-container">
+    <>
+      <HomeButton />
+      <div className="dashboard-container">
       <h2>Public Questions</h2>
-      {error && <p className="error">{error}</p>}
-      <ul>
-        {publicQuestions.map((question) => (
-          <li key={question._id} className="question-item">
-            <h3>{question.question}</h3>
-            <p>{question.answer}</p>
-            <p><strong>Privacy:</strong> {question.isPublic ? 'Public' : 'Private'}</p>
-            <ul>
-              {question.comments && question.comments.map((comment) => (
-                <li key={comment._id}>{comment.text}</li>
-              ))}
-            </ul>
-            <input
-              type="text"
-              value={commentTexts[question._id] || ''}
-              onChange={(e) => handleCommentChange(question._id, e.target.value)}
-              placeholder="Add a comment"
-            />
-            <button onClick={() => handleCommentSubmit(question._id)}>Submit Comment</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+        {error && <p className="error">{error}</p>}
+        <ul className='Box1'>
+          {publicQuestions.map((question) => (
+            <li key={question._id} className="question-item">
+              <h3>{question.question}</h3>
+              <p>{question.answer}</p>
+              <p><strong>Privacy:</strong> {question.isPublic ? 'Public' : 'Private'}</p>
+              <ul>
+                {question.comments && question.comments.map((comment) => (
+                  <li key={comment._id}>{comment.text}</li>
+                ))}
+              </ul>
+              <input
+                type="text"
+                value={commentTexts[question._id] || ''}
+                onChange={(e) => handleCommentChange(question._id, e.target.value)}
+                placeholder="Add a comment"
+              />
+              <button onClick={() => handleCommentSubmit(question._id)}>Submit Comment</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 
